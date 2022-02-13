@@ -1,0 +1,10 @@
+spring:
+  datasource:
+#    本地数据库
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/lhb?allowMultiQueries=true&useSSL=false
+      username: root
+      password: 1234
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

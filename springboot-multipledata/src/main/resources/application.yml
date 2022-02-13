@@ -1,0 +1,18 @@
+spring:
+  datasource:
+#    本地数据库
+    local:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/lhb?allowMultiQueries=true&useSSL=false  #这里直接写 url 格式会报错, 需要写为 jdbc-url 形式
+      username: root
+      password: 1234
+#    模拟His视图
+    his:
+      driver-class-name: com.mysql.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/lin?allowMultiQueries=true&useSSL=false
+      username: root
+      password: 1234
+
+# 这里的 mapper-locations 直接注释掉,要在配置类中指定了
+#mybatis:
+#  mapper-locations: classpath:mapper/*.xml

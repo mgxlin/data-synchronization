@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lhb.SynData.dao.LocalMapper">
+    <resultMap id="user" type="com.lhb.SynData.pojo.UserModel">
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
+    <!--  批量导入  -->
+    <insert id="insertAllModel">
+        insert into newuser (username,password) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.username},#{item.password})
+        </foreach>
+    </insert>
+
+    <!--  批量更新  -->
+    <update id="updateAllModel">
+        <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+            update newuser
+            <set>
+                username=#{item.username}
+            </set>
+            where password=#{item.password}
+        </foreach>
+    </update>
+
+    <!--  存在的唯一索引则更新,否则进行新增  -->
+    <insert id="updateAll">
+        INSERT INTO newuser (username,password) values
+        <foreach collection="list" item="item"  separator=",">
+            (#{item.username},#{item.password})
+        </foreach>
+        ON DUPLICATE KEY UPDATE username=values(username)
+    </insert>
+    <!--  获取本地的数据  -->
+    <select id="getAll" resultMap="user">
+        select * from newuser
+    </select>
+
+</mapper>
