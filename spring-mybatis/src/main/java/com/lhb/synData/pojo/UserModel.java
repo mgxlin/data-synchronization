@@ -1,4 +1,4 @@
-package com.lhb.SynData.pojo;
+package com.lhb.synData.pojo;
 
 import java.util.Objects;
 

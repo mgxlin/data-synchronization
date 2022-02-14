@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lhb.SynData.dao.HisMapper">
-    <resultMap id="user" type="com.lhb.SynData.pojo.UserModel">
+<mapper namespace="com.lhb.synData.dao.HisMapper">
+    <resultMap id="user" type="com.lhb.synData.pojo.UserModel">
         <result property="username" column="username"/>
         <result property="password" column="password"/>
     </resultMap>

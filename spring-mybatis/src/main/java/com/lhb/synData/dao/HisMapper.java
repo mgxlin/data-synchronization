@@ -1,6 +1,6 @@
-package com.lhb.SynData.dao;
+package com.lhb.synData.dao;
 
-import com.lhb.SynData.pojo.UserModel;
+import com.lhb.synData.pojo.UserModel;
 
 import java.util.List;
 

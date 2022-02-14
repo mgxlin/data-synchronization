@@ -1,8 +1,6 @@
-package com.lhb.SynData;
+package com.lhb.synData;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.io.IOException;
 
 /**
  * @author lhb

@@ -3,6 +3,7 @@ package com.lhb.singledata.task;
 import com.lhb.singledata.dao.HisMapper;
 import com.lhb.singledata.dao.LocalMapper;
 import com.lhb.singledata.pojo.UserModel;
+import com.lhb.singledata.service.DataSyn;
 import com.lhb.singledata.util.DataUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -25,6 +26,8 @@ public class SpringTask {
     private LocalMapper localMapper;
     @Autowired
     private HisMapper hisMapper;
+    @Autowired
+    private DataSyn dataSyn;
 
     /**
      * 2秒执行一次
@@ -33,13 +36,10 @@ public class SpringTask {
     public void task() {
         List<UserModel> local = localMapper.getAll();
         List<UserModel> his = hisMapper.getAll();
-        System.out.println("开始同步");
 
-        List<UserModel> distinct = DataUtil.distinct(his,local);
+        List<UserModel> distinct = dataSyn.distinct(his,local);
         if (!distinct.isEmpty()){
             localMapper.updateAll(distinct);
         }
-
-        System.out.println("同步结束");
     }
 }
